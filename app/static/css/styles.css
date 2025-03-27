@@ -1,0 +1,338 @@
+#particle-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(100vh) scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(-10vh) scale(1);
+    opacity: 1;
+  }
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Light mode Variables */
+:root {
+  --primary-bg: #F8F8F8;
+  --secondary-text: #000000;
+  --accent-color: #4169E1;
+  --accent-color-hover: #4F8AFF;
+  --text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark mode Variables */
+[data-theme="dark"] {
+  --primary-bg: #1C1C1C;
+  --secondary-text: #FFFFFF;
+  --accent-color: #6FA9FF;
+  --text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.2);
+}
+
+/* Make sure everything aligns with the colour switch animation */
+body,
+header,
+footer,
+* {
+  transition: 0.4s ease;
+}
+
+header,
+footer {
+  color: var(--secondary-text);
+}
+
+body {
+  background-color: var(--primary-bg);
+  color: var(--secondary-text);
+}
+
+a {
+  color: var(--secondary-text);
+  text-decoration: none;
+}
+
+.welcome-container{
+  overflow: hidden;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
+.hero {
+  height: 100vh;
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+  font-size: 1.5rem;
+  margin: 20px 0;
+}
+
+
+.register-btn {
+  color: white;
+  background: var(--accent-color);
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.register-btn:hover {
+  background: var(--accent-color-hover);
+}
+
+.login-btn {
+  cursor: pointer;
+  position: relative;
+  border: none;
+  background: none;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: color;
+}
+
+.login-btn:focus,
+.login-btn:hover {
+  color: var(--secondary-text);
+}
+
+.login-btn:focus:after,
+.login-btn:hover:after {
+  width: 100%;
+  left: 0%;
+}
+
+.login-btn:after {
+  content: "";
+  pointer-events: none;
+  bottom: -5px;
+  left: 50%;
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: var(--secondary-text);
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: width, left;
+}
+
+
+.cta-btn {
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  padding-block: 0.5rem;
+  padding-inline: 1.25rem;
+  background-color: var(--accent-color);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--secondary-text);
+  gap: 10px;
+  font-weight: bold;
+  border: 3px solid #ffffff4d;
+  outline: none;
+  overflow: hidden;
+  font-size: 15px;
+  color: white;
+}
+
+.cta-btn:hover::before {
+  animation: shine 1.5s ease-out infinite;
+}
+
+.cta-btn::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  background-image: linear-gradient(120deg,
+      rgba(255, 255, 255, 0) 30%,
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0) 70%);
+  top: 0;
+  left: -100px;
+  opacity: 0.6;
+}
+
+.cta-btn:hover {
+  transform: scale(1.05);
+  border-color: var(--accent-color-hover);
+}
+
+@keyframes shine {
+  0% {
+    left: -100px;
+  }
+
+  60% {
+    left: 100%;
+  }
+
+  to {
+    left: 100%;
+  }
+}
+
+.go-back-btn {
+
+  background-color: transparent;
+  color: var(--accent-color);
+  border: none;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: bold;
+  text-shadow: var(--text-shadow);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.go-back-btn:hover {
+  color: var(--secondary-text);
+  transform: scale(1.05);
+}
+
+.go-back-btn:focus {
+  outline: none;
+}
+
+footer {
+  background-color: var(--primary-bg);
+  color: var(--secondary-text);
+  padding: 20px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+footer a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: var(--secondary-text);
+}
+
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--secondary-text);
+  text-shadow: var(--text-shadow);
+}
+
+.logo span {
+  color: var(--accent-color);
+}
+
+main .welcome {
+  text-align: center;
+  margin-top: 20px;
+}
+
+main .welcome h1 {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+
+.auth-container {
+  position:absolute;
+  left: 50%;
+  top: 50%;
+  width: 300px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: var();
+  margin-top: -100px; 
+  margin-left: -150px; 
+}
+
+.auth-container h2 {
+  color: var(--secondary-text);
+}
+
+.auth-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.auth-container button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: var(--accent-color);
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.auth-container button:hover {
+  background: var(--accent-color-hover);
+}
+
+.auth-container p {
+  margin-top: 10px;
+}

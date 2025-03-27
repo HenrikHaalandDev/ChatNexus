@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Welcome to ChatNexus</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="welcome-container">
+    <header>
+        <div class="logo">
+            <h1>Chat<span>Nexus</span></h1>
+        </div>
+        <div class="auth-links">
+            <a href="{{ url_for('login') }}" class="login-btn">Login</a> |
+            <a href="{{ url_for('register') }}" class="register-btn">Register</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero logo">
+            <h1 >Welcome To <span>ChatNexus</span></h1>
+            <p>Seamless group conversations, your way.</p>
+            <p>Whether you're gaming, discussing ideas, or building a thriving community, create your own space to chat,
+                connect, and collaborate. Stay in touch effortlessly—wherever, whenever.</p>
+            <a href="{{ url_for('register') }}" class="cta-btn">Get Started</a>
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
+</div>
+
+
+{% endblock %}
