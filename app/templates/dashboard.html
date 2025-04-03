@@ -1,13 +1,155 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title> </title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<title>Page Toggle Example</title>
 {% endblock %}
 
 {% block body %}
-<h2>Welcome, {{ current_user.get_username() }}!</h2>
-<form action="{{ url_for('logout') }}" method="POST" style="display: inline;">
-    <button type="submit">Logout</button>
-</form>
-{% endblock %}
+<div class="dashboard-container">
+  <div class="leftside">
+    <div class="leftside-header">
+      <h2>Welcome, {{ current_user.get_username() | capitalize }}!</h2>
+    </div>
 
+    <div class="divider"></div>
+
+    <button onclick="showPage('page1')">
+      <i class="fa-solid fa-bell" style="margin-right: 8px;"></i> Activity
+    </button>
+
+    <button onclick="showPage('page2')">
+      <i class="fa-solid fa-message" style="margin-right: 8px;"></i> Chat
+    </button>
+
+    <button onclick="showPage('page3')">
+      <i class="fa-solid fa-users" style="margin-right: 8px;"></i> Groups
+    </button>
+
+    <button onclick="showPage('page4')">
+      <i class="fa-solid fa-ellipsis" style="margin-right: 8px;"></i> Other
+    </button>
+
+    <div class="divider"></div>
+
+    <button onclick="showPage('page5')">
+      <i class="fa-solid fa-shop" style="margin-right: 8px;"></i> Shop
+    </button>
+
+    <button onclick="showPage('page6')">
+      <i class="fa-solid fa-gear" style="margin-right: 8px;"></i> Settings
+    </button>
+
+    <!-- Logout Button -->
+    <form id="logout-form" action="{{ url_for('logout') }}" method="POST" style="display: inline;">
+      <button type="submit">
+        <i class="fa-solid fa-sign-out-alt" style="margin-right: 8px;"></i> Logout
+      </button>
+    </form>
+  </div>
+
+
+  <div class="dashboard-content">
+    <!-- Page 1 content -->
+    <div id="page1" class="page">Page 1 content here...</div>
+    <!-- Page 2 content -->
+    <div id="page2" class="page">Page 2 content here...</div>
+    <!-- Page 3 content -->
+    <div id="page3" class="page">Page 3 content here...</div>
+    <!-- Page 4 content -->
+    <div id="page4" class="page">Page 4 content here...</div>
+    <!-- Page 5 content -->
+    <div id="page5" class="page">Page 5 content here...</div>
+
+    <!-- Settings Page (Page 6 content) -->
+    <div id="page6" class="page">
+      <h2 class="settings-title"><i class="fa-solid fa-gear"></i> Settings</h2>
+
+      <!-- Profile Settings -->
+      <form action="{{ url_for('update_profile') }}" method="POST">
+        <div class="settings-section">
+          <h3><i class="fa-solid fa-user"></i> Profile</h3>
+          <label for="username">Username</label>
+          <input type="text" name="username" id="username" value="{{ current_user.get_username() }}" required>
+
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" value="{{ current_user.get_email() }}" required>
+
+          <label for="bio">Bio</label>
+          <textarea name="bio" id="bio" rows="3"
+            placeholder="Tell us something about yourself...">{{ current_user.bio or '' }}</textarea>
+
+          <button type="submit" class="save-btn">Save Changes</button>
+        </div>
+      </form>
+
+      <div class="settings-section">
+        <h3><i class="fa-solid fa-id-card"></i> Account</h3>
+        <form method="POST" action="{{ url_for('update_account') }}">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" value="{{ current_user.phone }}" placeholder="+1234567890">
+
+          <label for="language">Preferred Language</label>
+          <select id="language" name="language">
+            <option value="English" {% if current_user.language=='English' %}selected{% endif %}>English</option>
+            <option value="Spanish" {% if current_user.language=='Spanish' %}selected{% endif %}>Spanish</option>
+            <option value="French" {% if current_user.language=='French' %}selected{% endif %}>French</option>
+            <option value="German" {% if current_user.language=='German' %}selected{% endif %}>German</option>
+          </select>
+
+          <button type="submit" class="save-btn">Update Account</button>
+        </form>
+      </div>
+
+      <!-- Security Settings -->
+      <div class="settings-section">
+        <h3><i class="fa-solid fa-lock"></i> Security</h3>
+        <form method="POST" action="{{ url_for('update_security') }}">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" required>
+
+          <!-- Checkbox to toggle password visibility -->
+          <label for="show-password">
+            <input type="checkbox" id="show-password"> Show Password
+          </label>
+
+          <label for="2fa">Two-Factor Authentication</label>
+          <select id="2fa" name="two_factor">
+            <option value="Enabled" {% if current_user.two_factor=='Enabled' %}selected{% endif %}>Enabled</option>
+            <option value="Disabled" {% if current_user.two_factor=='Disabled' %}selected{% endif %}>Disabled</option>
+          </select>
+
+          <button type="submit" class="save-btn">Update Security</button>
+        </form>
+
+        <!-- Notification Settings -->
+        <div class="settings-section">
+          <h3><i class="fa-solid fa-bell"></i> Notifications</h3>
+          <label>
+            <input type="checkbox" checked> Email Notifications
+          </label>
+          <label>
+            <input type="checkbox"> Push Notifications
+          </label>
+          <label>
+            <input type="checkbox"> SMS Alerts
+          </label>
+          <button class="save-btn">Save Preferences</button>
+        </div>
+
+        <!-- Accessibility Settings -->
+        <div class="settings-section">
+          <h3><i class="fa-solid fa-universal-access"></i> Accessibility</h3>
+          <label for="text-size">Text Size</label>
+          <select id="text-size">
+            <option>Small</option>
+            <option selected>Medium</option>
+            <option>Large</option>
+          </select>
+          <button class="save-btn">Apply Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

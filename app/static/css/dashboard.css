@@ -1,0 +1,68 @@
+/* Settings Page Styling */
+.settings-title {
+    font-size: 24px;
+    color: var(--secondary-text);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.settings-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.settings-section {
+    background: var(--primary-bg);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.settings-section h3 {
+    margin-bottom: 10px;
+    color: var(--secondary-text);
+}
+
+.settings-section label {
+    display: block;
+    font-size: 14px;
+    margin: 8px 0 4px;
+    color: var(--secondary-text);
+}
+
+.settings-section input,
+.settings-section select,
+.settings-section textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    background: var(--primary-bg);
+    color: var(--secondary-text);
+}
+
+.settings-section textarea {
+    resize: none;
+}
+
+.settings-section input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+.save-btn {
+    width: 100%;
+    padding: 10px;
+    background: var(--accent-color);
+    color: var(--secondary-text);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+}
+
+.save-btn:hover {
+    background: var(--accent-color-hover);
+}

@@ -5,6 +5,9 @@
 {% endblock %}
 
 {% block body %}
+<div>
+    <a href="{{ url_for('index') }}" class="go-back-btn">Go Back</a>
+</div>
 <div class="auth-container">
     <h2>Register</h2>
     <form method="POST">
@@ -14,4 +17,4 @@
         <button type="submit" class="cta-btn">Register</button>
     </form>
     <p>Already have an account? <a href="{{ url_for('login') }}" class="login-btn">Login</a></p>
-{% endblock %}
+    {% endblock %}

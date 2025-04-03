@@ -6,31 +6,73 @@
 {% endblock %}
 
 {% block body %}
-<div class="welcome-container">
-    <header>
-        <div class="logo">
-            <h1>Chat<span>Nexus</span></h1>
-        </div>
-        <div class="auth-links">
-            <a href="{{ url_for('login') }}" class="login-btn">Login</a> |
-            <a href="{{ url_for('register') }}" class="register-btn">Register</a>
-        </div>
-    </header>
-
-    <main>
-        <div class="hero logo">
-            <h1 >Welcome To <span>ChatNexus</span></h1>
-            <p>Seamless group conversations, your way.</p>
-            <p>Whether you're gaming, discussing ideas, or building a thriving community, create your own space to chat,
-                connect, and collaborate. Stay in touch effortlessly—wherever, whenever.</p>
-            <a href="{{ url_for('register') }}" class="cta-btn">Get Started</a>
-        </div>
-    </main>
-
-    <footer>
-
-    </footer>
+<div id="loader" class="loader">
+    <div class="container-slice">
+        <div class="slice"></div>
+        <div class="slice"></div>
+        <div class="slice"></div>
+        <div class="slice"></div>
+        <div class="slice"></div>
+        <div class="slice"></div>
+    </div>
 </div>
+<div id="root">
+    <div class="welcome-container">
+        <header>
+            <div class="logo">
+                <h1>Chat<span>Nexus</span></h1>
+            </div>
+            <div class="auth-links">
+                <a href="{{ url_for('login') }}" class="login-btn">Login</a> |
+                <a href="{{ url_for('register') }}" class="register-btn">Register</a>
+            </div>
+        </header>
 
+        <main>
+            <div class="hero logo">
+                <h1>Welcome To Chat<span>Nexus</span></h1>
+                <p>Seamless group conversations, your way.</p>
+                <p>Whether you're gaming, discussing ideas, or building a thriving community, create your own space to
+                    chat,
+                    connect, and collaborate. Stay in touch effortlessly—wherever, whenever.</p>
+                <a href="{{ url_for('register') }}" class="cta-btn">Get Started</a>
+            </div>
+        </main>
+
+
+    </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: <a href="mailto:support@chatnexus.com">support@chatnexus.com</a></p>
+                <p>Phone: +1 (555) 123-4567</p>
+                <p>Address: 123 Social St, ChatCity, CS 98765</p>
+            </div>
+    
+            <div class="footer-section">
+                <h3>Who We Are</h3>
+                <p>ChatNexus is a social media platform that combines the best features of Reddit and Discord, designed
+                    to provide seamless, community-driven engagement. Our mission is to create a space where users can
+                    connect, share ideas, and build vibrant communities through both threaded discussions and live interactions.
+                </p>
+            </div>
+    
+            <div class="footer-section">
+                <h3>Resources Used</h3>
+                <ul>
+                    <li><a href="https://fontawesome.com/" target="_blank" rel="noopener noreferrer">All icons are from Font Awesome</a></li>
+                    <li><a href="https://codepen.io/wilvander/pen/KKQrGgP" target="_blank" rel="noopener noreferrer">CodePen by Wilvander</a></li>
+                    <li><a href="https://uiverse.io/adeladel522/giant-earwig-69" target="_blank" rel="noopener noreferrer">Uiverse by Adeladel522</a></li>
+                    <li><a href="https://uiverse.io/RiccardoRapelli/jolly-chicken-91" target="_blank" rel="noopener noreferrer">Uiverse by Riccardo Rapelli</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ChatNexus. All rights reserved.</p>
+        </div>
+    </footer>
+    
+</div>
 
 {% endblock %}

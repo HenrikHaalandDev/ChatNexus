@@ -24,12 +24,16 @@
     transform: translateY(100vh) scale(0.5);
     opacity: 0;
   }
+
   to {
     transform: translateY(-10vh) scale(1);
     opacity: 1;
   }
 }
 
+#root {
+  display: none;
+}
 
 * {
   margin: 0;
@@ -78,10 +82,6 @@ a {
   text-decoration: none;
 }
 
-.welcome-container{
-  overflow: hidden;
-}
-
 header {
   display: flex;
   justify-content: space-between;
@@ -113,6 +113,79 @@ header {
   margin: 20px 0;
 }
 
+/* General Footer Styling */
+footer {
+  background-color: var(--primary-bg);
+  color: var(--secondary-text);
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-section {
+  width: 30%;
+  margin-bottom: 20px;
+}
+
+.footer-section h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+.footer-section p,
+.footer-section ul {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin: 5px 0;
+}
+
+.footer-section ul li a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+  color: var(--accent-color-hover);
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  font-size: 0.75rem;
+  color: var(--secondary-text);
+}
+
+/* Responsive Design for Footer */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-section {
+    width: 100%;
+    text-align: center;
+  }
+}
 
 .register-btn {
   color: white;
@@ -221,8 +294,8 @@ header {
   }
 }
 
-.go-back-btn {
 
+.go-back-btn {
   background-color: transparent;
   color: var(--accent-color);
   border: none;
@@ -232,7 +305,11 @@ header {
   font-weight: bold;
   text-shadow: var(--text-shadow);
   transition: color 0.3s ease, transform 0.3s ease;
+  position: relative;
+  top: 10px;
 }
+
+
 
 .go-back-btn:hover {
   color: var(--secondary-text);
@@ -243,23 +320,7 @@ header {
   outline: none;
 }
 
-footer {
-  background-color: var(--primary-bg);
-  color: var(--secondary-text);
-  padding: 20px;
-  text-align: center;
-  font-size: 1rem;
-}
 
-footer a {
-  color: var(--accent-color);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-footer a:hover {
-  color: var(--secondary-text);
-}
 
 .welcome-container {
   display: flex;
@@ -293,7 +354,7 @@ main .welcome h1 {
 
 
 .auth-container {
-  position:absolute;
+  position: absolute;
   left: 50%;
   top: 50%;
   width: 300px;
@@ -302,8 +363,8 @@ main .welcome h1 {
   text-align: center;
   border-radius: 10px;
   box-shadow: var();
-  margin-top: -100px; 
-  margin-left: -150px; 
+  margin-top: -100px;
+  margin-left: -150px;
 }
 
 .auth-container h2 {
@@ -327,6 +388,270 @@ main .welcome h1 {
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.glass-effect {
+  background: linear-gradient(132deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 32px;
+}
+
+/* Flash message styling */
+.alert {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1050;
+  width: auto;
+  max-width: 80%;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 5px;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+  /* Add a semi-transparent background to ensure visibility */
+}
+
+/* Styling for success messages */
+.flash-success {
+  background-color: #28a745;
+  color: white;
+}
+
+/* Styling for warning messages */
+.flash-warning {
+  background-color: #ffc107;
+  
+}
+
+/* Styling for error messages */
+.flash-danger {
+  background-color: #dc3545;
+}
+
+/* Fade out animation */
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+    /* Slight upward movement */
+  }
+}
+
+/* Apply the fade-out animation */
+.alert.fade {
+  animation: fadeOut 5s forwards;
+}
+
+
+
+.dashboard-container {
+  overflow: hidden;
+}
+
+/* Left Side Navigation Styling */
+.leftside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 220px;
+  background-color: var(--primary-bg);
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.leftside-header {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.leftside h2 {
+  color: var(--secondary-text);
+  font-size: 24px;
+  margin: 0;
+}
+
+.leftside button {
+  background-color: transparent;
+  color: var(--secondary-text);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 12px 20px;
+  margin: 10px 0;
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-shadow: var(--text-shadow);
+}
+
+.leftside button i {
+  margin-right: 8px;
+}
+
+.leftside button:hover {
+  background-color: var(--accent-color);
+  color: var(--secondary-text);
+  transform: scale(1.05);
+}
+
+.leftside button.active {
+  background-color: var(--accent-color);
+  color: var(--secondary-text);
+}
+
+.leftside button:focus {
+  outline: none;
+  background-color: var(--accent-color-hover);
+  color: var(--secondary-text);
+}
+
+/* Divider styling */
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--accent-color);
+  opacity: 0.2;
+  margin: 10px 0;
+}
+
+/* Dashboard Content Styling */
+.dashboard-content {
+  margin-left: 240px;
+  /* Adjusted for wider sidebar */
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+  min-height: 100vh;
+}
+
+/* Page Styling */
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .leftside {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    flex-direction: row;
+    overflow-x: auto;
+    justify-content: space-between;
+  }
+
+  .leftside button {
+    width: auto;
+    margin: 5px;
+  }
+}
+
+/* On mobile, adjust for better interaction */
+@media (max-width: 480px) {
+  .leftside {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+  }
+
+  .leftside button {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+
+  .leftside .logo {
+    font-size: 1.5rem;
+  }
+}
+
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    top: 0;
+  }
+}
+
+
+.sidenav {
+  position: relative;
+
+}
+
+/* Base responsive styling */
+@media screen and (max-width: 768px) {
+  .hero {
+    width: 100vw;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+  }
+
+  .logo {
+    font-size: 2rem;
+  }
+
+  header {
+    padding: 10px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .auth-container {
+    width: 90%;
+    max-width: 300px;
+    margin-left: -40%;
+  }
+}
+
+/* Small mobile devices */
+@media screen and (max-width: 480px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .logo {
+    font-size: 1.8rem;
+  }
+
+  .auth-container {
+    padding: 15px;
+  }
 }
 
 .auth-container button:hover {
